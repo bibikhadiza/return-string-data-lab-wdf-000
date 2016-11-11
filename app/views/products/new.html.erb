@@ -1,1 +1,5 @@
-
+<%=form_for(@product) do |f| %>
+Name: <%= f.text_field :name %>
+Inventory: <%= f.text_field :inventory%>
+<%= f.submit "Create Product" %>
+<%end%>

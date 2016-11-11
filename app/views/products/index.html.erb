@@ -1,1 +1,23 @@
 
+<%= render partial: "products/product", locals: {products: @products} %>
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+  $(".js-more").on('click', function() {
+    var id = $(this).data("id");
+
+    $.get("/products/" + id + "/description", function(data) {
+      $('div').html(data);
+    });
+
+    $.get("/products/" + id + "/inventory", function(data) {
+      if(data === "true"){ var result = "Available"}
+      else { result = "Sold Out"}
+       $('div').append("<p>" + result + "</p>");
+     })
+});
+
+
+
+});
+</script>
